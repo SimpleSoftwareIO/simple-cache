@@ -1,13 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Facade;
 use SimpleSoftwareIO\Cache\QueryCache;
 use SimpleSoftwareIO\Cache\QueryCacheBuilder;
-use Illuminate\Support\Facades\Facade;
 
 class QueryCacheTest extends PHPUnit_Framework_TestCase
 {
-
     public function setUp()
     {
         Facade::clearResolvedInstances();
