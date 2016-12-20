@@ -36,7 +36,7 @@ The cacheable trait may be used by adding the trait to the Eloquent model of you
     namespace App;
     
     use Illuminate\Database\Eloquent\Model;
-    use App\Cache\Cacheable;
+    use SimpleSoftwareIO\Cache\Cacheable;
     
     class User extends Model
     {
@@ -56,7 +56,7 @@ You may adjust the default cache length by modifying the `cacheLength` property 
     namespace App;
     
     use Illuminate\Database\Eloquent\Model;
-    use App\Cache\Cacheable;
+    use SimpleSoftwareIO\Cache\Cacheable;
     
     class User extends Model
     {
@@ -73,7 +73,7 @@ The configured cache store may also be adjusted by modifying the `cacheStore` pr
     namespace App;
     
     use Illuminate\Database\Eloquent\Model;
-    use App\Cache\Cacheable;
+    use SimpleSoftwareIO\Cache\Cacheable;
     
     class User extends Model
     {
@@ -90,7 +90,7 @@ Cache busting will automatically invalid the cache when an `insert/update/delete
     namespace App;
     
     use Illuminate\Database\Eloquent\Model;
-    use App\Cache\Cacheable;
+    use SimpleSoftwareIO\Cache\Cacheable;
     
     class User extends Model
     {
