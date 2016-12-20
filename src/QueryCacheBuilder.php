@@ -32,6 +32,16 @@ class QueryCacheBuilder extends Builder
     }
 
     /**
+     * Generates a new query.
+     *
+     * @return static
+     */
+    public function newQuery()
+    {
+        return new static($this->cache, $this->connection, $this->grammar, $this->processor);
+    }
+
+    /**
      * Returns the query results.
      *
      * @param array $columns

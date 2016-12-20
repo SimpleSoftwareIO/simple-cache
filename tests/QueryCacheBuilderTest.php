@@ -60,4 +60,10 @@ class QueryCacheBuilderTest extends PHPUnit_Framework_TestCase
 
         $this->builder->dontRemember();
     }
+
+    /** @test */
+    public function new_query_returns_a_new_static()
+    {
+        $this->isInstanceOf(QueryCacheBuilder::class, $this->builder->newQuery());
+    }
 }
