@@ -82,21 +82,25 @@ trait Cacheable
     /**
      * Enables cache busting.
      *
-     * @return void
+     * @return Cacheable
      */
     public function bust()
     {
         $this->cacheBusting = true;
+
+        return $this;
     }
 
     /**
      * Disables cache busting.
      *
-     * @return void
+     * @return Cacheable
      */
     public function dontBust()
     {
         $this->cacheBusting = false;
+
+        return $this;
     }
 
     /**
