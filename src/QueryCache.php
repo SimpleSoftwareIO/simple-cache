@@ -3,8 +3,8 @@
 namespace SimpleSoftwareIO\Cache;
 
 use Illuminate\Cache\TaggableStore;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Database\Eloquent\Collection;
 
 class QueryCache
 {
@@ -81,7 +81,9 @@ class QueryCache
      */
     public function get(QueryCacheBuilder $builder, $columns = ['*'])
     {
-        if (! $this->enabled()) return $this->performQuery($builder, $columns);
+        if (! $this->enabled()) {
+            return $this->performQuery($builder, $columns);
+        }
 
         $key = $this->generateKey($builder, $columns);
 
@@ -93,7 +95,7 @@ class QueryCache
     }
 
     /**
-     * Gets a Cache instance
+     * Gets a Cache instance.
      *
      * @return Cache
      */
@@ -158,7 +160,9 @@ class QueryCache
      */
     public function flush($tag)
     {
-        if ($this->isTaggable()) return Cache::tags($tag)->flush();
+        if ($this->isTaggable()) {
+            return Cache::tags($tag)->flush();
+        }
 
         return Cache::flush();
     }

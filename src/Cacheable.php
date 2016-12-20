@@ -27,7 +27,7 @@ trait Cacheable
     protected $cacheBusting = false;
 
     /**
-     * Overrides the default QueryBuilder to inject the Cache methods
+     * Overrides the default QueryBuilder to inject the Cache methods.
      *
      * @return QueryCacheBuilder
      */
@@ -41,7 +41,7 @@ trait Cacheable
     }
 
     /**
-     * Generates a new QueryCache
+     * Generates a new QueryCache.
      *
      * @return QueryCache
      */

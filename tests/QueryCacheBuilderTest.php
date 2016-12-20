@@ -1,8 +1,8 @@
 <?php
 
 use SimpleSoftwareIO\Cache\QueryCache;
-use SimpleSoftwareIO\Cache\QueryCacheBuilder;
 use Illuminate\Database\ConnectionInterface;
+use SimpleSoftwareIO\Cache\QueryCacheBuilder;
 use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Query\Processors\Processor;
 
