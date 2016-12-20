@@ -5,26 +5,41 @@ namespace SimpleSoftwareIO\Cache;
 trait Cacheable
 {
     /**
-     * Configures the cache store to be used.
+     * Returns the Cache store to use.
      *
-     * @var
+     * @return null|string
      */
-    protected $cacheStore;
+    public function getCacheStore()
+    {
+        if (property_exists($this, 'cacheStore')) return $this->cacheStore;
+
+        return null;
+    }
 
     /**
-     * Determines the length to cache a result.
+     * Returns if the cache should be busted
+     * on inserts/updates/delete.
      *
-     * @var int
+     * @return bool
      */
-    protected $cacheLength = 30;
+    public function getCacheBusting()
+    {
+        if (property_exists($this, 'cacheBusting')) return $this->cacheBusting;
+
+        return false;
+    }
 
     /**
-     * Determines if the cache should be busted
-     * on inserts/updates/deletes.
+     * Gets the length of the cache.  Defaults to 30 minutes.
      *
-     * @var bool
+     * @return int
      */
-    protected $cacheBusting = false;
+    public function getCacheLength()
+    {
+        if (property_exists($this, 'cacheLength')) return $this->cacheLength;
+
+        return 30;
+    }
 
     /**
      * Overrides the default QueryBuilder to inject the Cache methods.
@@ -47,7 +62,7 @@ trait Cacheable
      */
     protected function queryCache()
     {
-        return new QueryCache($this->cacheStore, $this->cacheLength);
+        return new QueryCache($this->cacheStore, $this->getCacheLength());
     }
 
     /**
