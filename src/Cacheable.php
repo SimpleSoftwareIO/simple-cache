@@ -11,7 +11,7 @@ trait Cacheable
      */
     public function getCacheStore()
     {
-        if (property_exists($this, 'cacheStore')) return $this->cacheStore;
+        if (isset($this->cacheStore)) return $this->cacheStore;
 
         return null;
     }
@@ -24,7 +24,7 @@ trait Cacheable
      */
     public function getCacheBusting()
     {
-        if (property_exists($this, 'cacheBusting')) return $this->cacheBusting;
+        if (isset($this->cacheBusting)) return $this->cacheBusting;
 
         return false;
     }
@@ -36,7 +36,7 @@ trait Cacheable
      */
     public function getCacheLength()
     {
-        if (property_exists($this, 'cacheLength')) return $this->cacheLength;
+        if (isset($this->cacheLength)) return $this->cacheLength;
 
         return 30;
     }
@@ -62,7 +62,7 @@ trait Cacheable
      */
     protected function queryCache()
     {
-        return new QueryCache($this->cacheStore, $this->getCacheLength());
+        return new QueryCache($this->getCacheStore(), $this->getCacheLength());
     }
 
     /**
@@ -73,7 +73,7 @@ trait Cacheable
      */
     public function finishSave(array $options)
     {
-        if ($this->cacheBusting) {
+        if ($this->getCacheBusting()) {
             $this->queryCache()->flush($this->getTable());
         }
 
@@ -87,7 +87,7 @@ trait Cacheable
      */
     public function delete()
     {
-        if ($this->cacheBusting) {
+        if ($this->getCacheBusting()) {
             $this->queryCache()->flush($this->getTable());
         }
 
@@ -125,6 +125,6 @@ trait Cacheable
      */
     public function isBusting()
     {
-        return $this->cacheBusting;
+        return $this->getCacheBusting();
     }
 }
