@@ -103,17 +103,11 @@ Cache busting will automatically invalid the cache when an `insert/update/delete
 
 ### Methods
 
-#### bust()
+#### flush()
 
-The `bust` method will enable cache busting for the model
+The `flush` method will flush the cache for a model.
 
-    User::bust();  //Cache busting is enabled.
-    
-#### dontBust()
-
-The `dontBust` method will disable cache busting for the model.
-
-    User::dontBust();  //Cache busting is disabled.
+    User::flush();  //Cache is flushed for the `User` model.
 
 #### isBusting()
 

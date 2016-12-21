@@ -9,6 +9,13 @@ class Model extends EloquentModel
     use Cacheable;
 }
 
+class BustingModel extends EloquentModel
+{
+    use Cacheable;
+
+    protected $cacheBusting = true;
+}
+
 class CacheableTest extends PHPUnit_Framework_TestCase
 {
     public function tearDown()
@@ -79,7 +86,7 @@ class CacheableTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function insert_and_update_bust_the_cache_when_busting_is_enabled()
     {
-        $model = Mockery::mock('Model[queryCache]')
+        $model = Mockery::mock('BustingModel[queryCache]')
             ->shouldAllowMockingProtectedMethods();
 
         $queryCache = Mockery::mock(QueryCache::class);
@@ -89,8 +96,6 @@ class CacheableTest extends PHPUnit_Framework_TestCase
         $model->shouldReceive('queryCache')
             ->once()
             ->andReturn($queryCache);
-
-        $model->bust();
 
         $model->finishSave([]);
     }
@@ -104,15 +109,13 @@ class CacheableTest extends PHPUnit_Framework_TestCase
         $model->shouldReceive('queryCache')
             ->times(0);
 
-        $model->dontBust();
-
         $model->finishSave([]);
     }
 
     /** @test */
     public function delete_should_bust_the_cache_when_busting_is_enabled()
     {
-        $model = Mockery::mock('Model[queryCache]')
+        $model = Mockery::mock('BustingModel[queryCache]')
             ->shouldAllowMockingProtectedMethods();
 
         $queryCache = Mockery::mock(QueryCache::class);
@@ -122,8 +125,6 @@ class CacheableTest extends PHPUnit_Framework_TestCase
         $model->shouldReceive('queryCache')
             ->once()
             ->andReturn($queryCache);
-
-        $model->bust();
 
         $model->delete();
     }
@@ -137,28 +138,23 @@ class CacheableTest extends PHPUnit_Framework_TestCase
         $model->shouldReceive('queryCache')
             ->times(0);
 
-        $model->dontBust();
-
         $model->delete();
     }
 
     /** @test */
-    public function bust_enables_cache_busting()
+    public function flush_empties_the_cache()
     {
-        $model = new Model;
+        $model = Mockery::mock('BustingModel[queryCache]')
+            ->shouldAllowMockingProtectedMethods();
 
-        $model->bust();
+        $queryCache = Mockery::mock(QueryCache::class);
+        $queryCache->shouldReceive('flush')
+            ->once();
 
-        $this->assertTrue($model->isBusting());
-    }
+        $model->shouldReceive('queryCache')
+            ->once()
+            ->andReturn($queryCache);
 
-    /** @test */
-    public function dont_bust_disables_cache_busting()
-    {
-        $model = new Model;
-
-        $model->dontBust();
-
-        $this->assertFalse($model->isBusting());
+        $model->flush();
     }
 }

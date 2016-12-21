@@ -99,30 +99,6 @@ trait Cacheable
     }
 
     /**
-     * Enables cache busting.
-     *
-     * @return Cacheable
-     */
-    public function bust()
-    {
-        $this->cacheBusting = true;
-
-        return $this;
-    }
-
-    /**
-     * Disables cache busting.
-     *
-     * @return Cacheable
-     */
-    public function dontBust()
-    {
-        $this->cacheBusting = false;
-
-        return $this;
-    }
-
-    /**
      * Returns the status of cache busting.
      *
      * @return bool
@@ -130,5 +106,17 @@ trait Cacheable
     public function isBusting()
     {
         return $this->getCacheBusting();
+    }
+
+    /**
+     * Flushes the cache.
+     *
+     * @return $this
+     */
+    public function flush()
+    {
+        $this->queryCache()->flush($this->getTable());
+
+        return $this;
     }
 }
