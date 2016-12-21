@@ -22,7 +22,7 @@ class CacheableTest extends PHPUnit_Framework_TestCase
         $model = new class extends EloquentModel {
             use Cacheable;
 
-            protected $cacheStore= 'fooStore';
+            protected $cacheStore = 'fooStore';
         };
 
         $this->assertEquals('fooStore', $model->getCacheStore());

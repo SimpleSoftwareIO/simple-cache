@@ -11,9 +11,9 @@ trait Cacheable
      */
     public function getCacheStore()
     {
-        if (isset($this->cacheStore)) return $this->cacheStore;
-
-        return null;
+        if (isset($this->cacheStore)) {
+            return $this->cacheStore;
+        }
     }
 
     /**
@@ -24,7 +24,9 @@ trait Cacheable
      */
     public function getCacheBusting()
     {
-        if (isset($this->cacheBusting)) return $this->cacheBusting;
+        if (isset($this->cacheBusting)) {
+            return $this->cacheBusting;
+        }
 
         return false;
     }
@@ -36,7 +38,9 @@ trait Cacheable
      */
     public function getCacheLength()
     {
-        if (isset($this->cacheLength)) return $this->cacheLength;
+        if (isset($this->cacheLength)) {
+            return $this->cacheLength;
+        }
 
         return 30;
     }
