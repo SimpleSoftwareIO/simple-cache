@@ -107,7 +107,7 @@ Cache busting will automatically invalid the cache when an `insert/update/delete
 
 The `flush` method will flush the cache for a model.
 
-    User::flush();  //Cache is flushed for the `User` model.
+    (new User)->flush()  //Cache is flushed for the `User` model.
 
 #### isBusting()
 
