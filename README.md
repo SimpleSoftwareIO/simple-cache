@@ -7,8 +7,6 @@ Simple Cache
 [![License](https://poser.pugx.org/simplesoftwareio/simple-cache/license.svg)](https://packagist.org/packages/simplesoftwareio/simple-cache)
 [![Total Downloads](https://poser.pugx.org/simplesoftwareio/simple-cache/downloads.svg)](https://packagist.org/packages/simplesoftwareio/simple-cache)
 
-## This is pre-released software.  Use at your own risk.
-
 - [Introduction](#docs-introduction)
 - [Configuration](#docs-configuration)
 - [Usage](#docs-usage)
@@ -21,7 +19,7 @@ Simple Cache
 First, add the Simple Cache package to your `require` in your `composer.json` file:
 
 	"require": {
-		"simplesoftwareio/simple-cache": "dev-master"
+		"simplesoftwareio/simple-cache": "~1"
 	}
 
 Next, run the `composer update` command.  
@@ -113,7 +111,7 @@ The `flush` method will flush the cache for a model.
 
 `isBusting` will return the current status of the `cacheBusting` property.
 
-    if(User::isBusting()) {
+    if((new User)->isBusting()) {
         // Is cache busting
     }
     
