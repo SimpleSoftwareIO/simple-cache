@@ -73,6 +73,7 @@ trait Cacheable
      * Flushes the cache on insert/update.
      *
      * @param array $options
+     *
      * @return void
      */
     public function finishSave(array $options)

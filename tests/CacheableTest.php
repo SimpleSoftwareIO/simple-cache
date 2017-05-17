@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 use SimpleSoftwareIO\Cache\Cacheable;
 use SimpleSoftwareIO\Cache\QueryCache;
-use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class Model extends EloquentModel
 {
@@ -26,7 +26,7 @@ class CacheableTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function the_correct_cache_store_is_returned_when_a_cache_store_is_set()
     {
-        $model = new class extends EloquentModel {
+        $model = new class() extends EloquentModel {
             use Cacheable;
 
             protected $cacheStore = 'fooStore';
@@ -38,7 +38,7 @@ class CacheableTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function null_is_returned_when_a_cache_store_is_not_set()
     {
-        $model = new Model;
+        $model = new Model();
 
         $this->assertNull($model->getCacheStore());
     }
@@ -46,7 +46,7 @@ class CacheableTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function cache_busting_returns_true_when_cache_busting_is_set()
     {
-        $model = new class extends EloquentModel {
+        $model = new class() extends EloquentModel {
             use Cacheable;
 
             protected $cacheBusting = true;
@@ -58,7 +58,7 @@ class CacheableTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function cache_busting_returns_false_when_no_cache_busting_is_set()
     {
-        $model = new Model;
+        $model = new Model();
 
         $this->assertFalse($model->getCacheBusting());
     }
@@ -74,7 +74,7 @@ class CacheableTest extends PHPUnit_Framework_TestCase
     /** @test */
     public function the_correct_length_is_returned_when_a_length_is_set()
     {
-        $model = new class extends EloquentModel {
+        $model = new class() extends EloquentModel {
             use Cacheable;
 
             protected $cacheLength = 45;

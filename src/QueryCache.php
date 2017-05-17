@@ -3,8 +3,8 @@
 namespace SimpleSoftwareIO\Cache;
 
 use Illuminate\Cache\TaggableStore;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class QueryCache
 {
@@ -26,7 +26,7 @@ class QueryCache
      * QueryCache constructor.
      *
      * @param string $store
-     * @param int $length
+     * @param int    $length
      */
     public function __construct($store, $length)
     {
@@ -76,12 +76,13 @@ class QueryCache
      * Gets the model results.
      *
      * @param QueryCacheBuilder $builder
-     * @param array $columns
+     * @param array             $columns
+     *
      * @return Collection
      */
     public function get(QueryCacheBuilder $builder, $columns = ['*'])
     {
-        if (! $this->enabled()) {
+        if (!$this->enabled()) {
             return $this->performQuery($builder, $columns);
         }
 
@@ -118,7 +119,8 @@ class QueryCache
      * Performs the query on the model.
      *
      * @param QueryCacheBuilder $builder
-     * @param array $columns
+     * @param array             $columns
+     *
      * @return mixed
      */
     protected function performQuery(QueryCacheBuilder $builder, $columns = ['*'])
@@ -130,7 +132,8 @@ class QueryCache
      * Generates the cache key.
      *
      * @param QueryCacheBuilder $builder
-     * @param array $columns
+     * @param array             $columns
+     *
      * @return string
      */
     protected function generateKey(QueryCacheBuilder $builder, array $columns)
@@ -145,6 +148,7 @@ class QueryCache
      * Returns the tag to tag a cache.
      *
      * @param QueryCacheBuilder $builder
+     *
      * @return string
      */
     protected function getTag(QueryCacheBuilder $builder)
@@ -156,6 +160,7 @@ class QueryCache
      * Flushes the cache for a model.
      *
      * @param $tag
+     *
      * @return mixed
      */
     public function flush($tag)

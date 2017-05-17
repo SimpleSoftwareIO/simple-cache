@@ -1,10 +1,10 @@
 <?php
 
-use SimpleSoftwareIO\Cache\QueryCache;
 use Illuminate\Database\ConnectionInterface;
-use SimpleSoftwareIO\Cache\QueryCacheBuilder;
 use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Query\Processors\Processor;
+use SimpleSoftwareIO\Cache\QueryCache;
+use SimpleSoftwareIO\Cache\QueryCacheBuilder;
 
 class QueryCacheBuilderTest extends PHPUnit_Framework_TestCase
 {

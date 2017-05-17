@@ -2,8 +2,8 @@
 
 namespace SimpleSoftwareIO\Cache;
 
-use Illuminate\Database\Query\Builder;
 use Illuminate\Database\ConnectionInterface;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Query\Processors\Processor;
 
@@ -19,10 +19,10 @@ class QueryCacheBuilder extends Builder
     /**
      * QueryCacheBuilder constructor.
      *
-     * @param QueryCache $cache
+     * @param QueryCache          $cache
      * @param ConnectionInterface $connection
-     * @param Grammar $grammar
-     * @param Processor $processor
+     * @param Grammar             $grammar
+     * @param Processor           $processor
      */
     public function __construct(QueryCache $cache, ConnectionInterface $connection, Grammar $grammar, Processor $processor)
     {
@@ -45,6 +45,7 @@ class QueryCacheBuilder extends Builder
      * Returns the query results.
      *
      * @param array $columns
+     *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function get($columns = ['*'])
@@ -56,6 +57,7 @@ class QueryCacheBuilder extends Builder
      * Sets the time to remember a query.
      *
      * @param int $minutes
+     *
      * @return $this
      */
     public function remember($minutes)
