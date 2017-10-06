@@ -11,6 +11,8 @@ Simple Cache
 - [Configuration](#docs-configuration)
 - [Usage](#docs-usage)
 
+## Try our dead simple, free file transfer service [keep.sh](https://keep.sh)
+
 <a id="docs-configuration"></a>
 ## Configuration
 
