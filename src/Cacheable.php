@@ -39,10 +39,10 @@ trait Cacheable
     public function getCacheLength()
     {
         if (isset($this->cacheLength)) {
-            return $this->cacheLength;
+            return $this->cacheLength * 60;
         }
 
-        return 30;
+        return 30 * 60;
     }
 
     /**
