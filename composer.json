@@ -21,6 +21,7 @@
   "require": {
     "illuminate/database": "~5",
     "illuminate/cache": "~5",
-    "illuminate/support": "~5"
+    "illuminate/support": "~5",
+    "laravel/framework": "~5.8.0 | ~6.0"
   }
 }
